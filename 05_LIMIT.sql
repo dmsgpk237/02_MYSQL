@@ -58,4 +58,4 @@ menu_name 과 menu_price
     from
         tbl_menu
     order by menu_price asc
-    limit 0, 3;
+    limit 3;

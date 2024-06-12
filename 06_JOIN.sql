@@ -26,17 +26,18 @@ INNER JOIN
 - 두 테이블의 교집합을 반환하는 SQL JOIN 유형
 - INNER JOIN에서 INNER 키워드는 생략 가능하다.
 - 컬럼 명이 같거나, 다를 경우 ON으로 서로 연관있는 컬럼에 대한
+- 컬럼명이 같을 경우는 using
 - 조건을 작성하여 JOIN한다.
 */
 
-select
-    a.menu_name,
-    b.category_name
-from
-    tbl_menu a -- 보통 from에 있는 것들을 a라고 칭한다.
-inner join
-        tbl_category b -- 가져오는 애들
-    on a.category_code = b.category_code
+select -- 보여줘
+    a.menu_name, -- tbl_menu에 menu_name과
+    b.category_name -- tbl_category에 category_name을 보여줘
+from -- 어디서?
+    tbl_menu a -- tbl_menu 와
+    inner join -- 합쳐진
+            tbl_category b -- tbl_category 를
+        on a.category_code = b.category_code -- 근데, tbl_menu에 cate
 order by b.category_name;
 
 -- a와 b를 바꿨지만 값은 동일하게 나온다.
