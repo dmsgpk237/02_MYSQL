@@ -33,22 +33,38 @@ subject_name varchar(255) not null unique
           (null, 'MYBATIS'),
           (null, ' ');
 
+-- 강사님은 이렇게 하셨음 (자동으로 넘버를 설정해주니까 넘버는 안 써도 된다)
+    insert into favorite_subject(subject_name)
+    values('spring'),
+          ('jdcb'),
+          ('java'),
+          ('mysql'),
+          ('mybatis');
+    select * from favorite_subject
+    order by subject_no;
+
     select * from favorite_subject;
     select * from class;
 
     create table if not exists class (
+        -- if not exists 없어도 생성 가능(혹시 이 테이블이 없으면 생성)
         student_no int auto_increment primary key,
         student_name varchar(255) not null,
-        gender varchar(255) check(gender in('남', '여')),
+        gender varchar(5) check(gender in('남', '여')),
         github_id varchar(255) not null unique,
         email varchar(255) not null unique,
         mbti varchar(10),
         subject_no int,
             foreign key(subject_no)
                 references favorite_subject (subject_no)
+        -- 레퍼런스 [어디랑 관계를 맺을거냐], 그것은 (페이보릿 서브젝트 넘버필드)
     );
 
+    -- 속성 제약조건등, 테이블 구성을 확인할 수 있음.
+    describe class;
+
     insert into class
+        -- subject_no 랑 (null) 안 넣어도 됨 자동으로 넘버를 생성해주기 때문.
     (student_no, student_name, gender, github_id, email, mbti, subject_no)
     values (null, '박태근', '남', 'Ohgiraffers-bear', 'bear.ohgiraffers@gmail.com', 'ENFJ', 1),
            (null, '지동현', '남', 'Bring2it2on', 'yjkl0516@gmail.com', null, 2),
