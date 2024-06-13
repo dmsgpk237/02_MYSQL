@@ -66,7 +66,7 @@ select
         select trim(both '@' from '@@@@@@@@@@@@@@@');
 
 -- REPEAT(문자열, 횟수) : 문자열을 횟수만큼 반복
-    select repeat('재밌다. mysql', 3);
+    select repeat('재밌다, mysql ', 3);
 
 -- REPLACE(문자열, 찾을 문자열, 바꿀 문자열) : 문자열에서 문자열을 찾아 바꿈
     select replace('마이 SQL', '마이', 'MY');
@@ -78,7 +78,7 @@ select
     select concat('제 이름은', space(5), '이고 나이는', space(3), '세 입니다.');
 
 -- SUBSTRING(문자열, 시작위치, 길이) : 시작 위치부터 길이만큼의 문자를 반환(길이를 생략하면 시작부터 끝까지 반환)
-    select substring('안녕하세요, 반갑습니다.', 8, 2),
+    select substring('안녕하세요반갑습니다.', 8, 2),
            substring('안녕하세요, 반갑습니다', 8);
 
 -- SUBSTRING_INDEX(문자열, 구분자, 횟수) : 구분자가 왼쪽부터 횟수 번째까지 나오면 그 이후의 오른쪽은 버린다.
@@ -90,7 +90,7 @@ select
 -- 숫자형
 
 -- FORMAT(숫자, 소수점 자릿수)
--- FORMAT : 1000 단위마다 콤파(,)를 표시해주며, 소수점 아래 자릿수(반올림) 까지 표현한다.
+-- FORMAT : 1000 단위마다 콤마(,)를 표시해주며, 소수점 아래 자릿수(반올림) 까지 표현한다.
     select format(123123123123.456456456, 3);
 
 -- BIN(숫자) : 2진수
@@ -129,7 +129,9 @@ select
 -- 소수점을 기준으로 정수 위치까지 구하고 나머지는 버림
     select truncate(12345.12345, 3), truncate(12345.12345, 0), truncate(12345.12345, -2);
 
+
 -- 날짜 및 시간 관련 함수
+
 -- ADDDATE(날짜, 차이) : 날짜를 기준으로 차이를 더함
 -- SUBDATE(날짜, 차이) : 날짜를 기준으로 차이를 뺌
     select adddate('2024-06-13', interval 30 day), adddate('2024-06-13', interval 6 month);
